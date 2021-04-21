@@ -208,6 +208,8 @@ test('set-pipeline-variables - delete secret', async () => {
 })
 
 test('set-pipeline-variables - delete not found', async () => {
+  const originalWarn = console.warn
+  console.error = jest.fn()
   setCurrentOrgId('good')
   setStore({
     cloudmanager_programid: '4',
@@ -222,6 +224,7 @@ test('set-pipeline-variables - delete not found', async () => {
   await expect(init.mock.calls.length).toEqual(2)
   await expect(init).toHaveBeenCalledWith('good', 'test-client-id', 'fake-token', 'https://cloudmanager.adobe.io')
   await expect(mockSdk.setPipelineVariables.mock.calls.length).toEqual(0)
+  console.warn = originalWarn
 })
 
 test('set-pipeline-variables - second get fails', async () => {

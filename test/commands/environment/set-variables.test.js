@@ -255,6 +255,9 @@ test('set-environment-variables - delete secret', async () => {
 })
 
 test('set-environment-variables - delete not found', async () => {
+  const originalWarn = console.warn
+  console.error = jest.fn()
+
   setCurrentOrgId('good')
   setStore({
     cloudmanager_programid: '4',
@@ -269,6 +272,7 @@ test('set-environment-variables - delete not found', async () => {
   await expect(init.mock.calls.length).toEqual(2)
   await expect(init).toHaveBeenCalledWith('good', 'test-client-id', 'fake-token', 'https://cloudmanager.adobe.io')
   await expect(mockSdk.setEnvironmentVariables.mock.calls.length).toEqual(0)
+  console.warn = originalWarn
 })
 
 test('set-environment-variables - stdin - not JSON', async () => {
