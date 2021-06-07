@@ -33,6 +33,7 @@ const SetEnvironmentVariables = require('./commands/cloudmanager/environment/set
 const ListPipelineVariables = require('./commands/cloudmanager/pipeline/list-variables')
 const SetPipelineVariables = require('./commands/cloudmanager/pipeline/set-variables')
 const DeleteEnvironment = require('./commands/cloudmanager/environment/delete')
+const GetCommerceCommand = require('./commands/cloudmanager/magento/get-commerce-command')
 
 module.exports = {
   'list-programs': new ListProgramsCommand().listPrograms,
@@ -58,4 +59,5 @@ module.exports = {
   'list-pipeline-variables': new ListPipelineVariables().getVariables,
   'set-pipeline-variables': new SetPipelineVariables().setVariables,
   'delete-environment': new DeleteEnvironment().deleteEnvironment,
+  'get-commerce-command': new GetCommerceCommand().getCLICommand,
 }
