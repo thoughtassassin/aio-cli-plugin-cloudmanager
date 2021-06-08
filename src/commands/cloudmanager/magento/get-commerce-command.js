@@ -2,6 +2,7 @@ const { Command } = require('@oclif/command')
 const { initSdk, getProgramId } = require('../../../cloudmanager-helpers')
 const { cli } = require('cli-ux')
 const commonFlags = require('../../../common-flags')
+const notifier = require('node-notifier')
 
 class GetCommerceCommand extends Command {
   async run () {
@@ -21,6 +22,12 @@ class GetCommerceCommand extends Command {
     }
 
     cli.action.stop(`commerce command result: \n${result.data}`)
+
+    notifier.notify({
+      title: 'Commerce Command',
+      message: result.data,
+      timeout: false
+    })
 
     return result
   }
