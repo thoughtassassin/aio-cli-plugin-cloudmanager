@@ -17,7 +17,7 @@ class GetCommerceCommand extends Command {
     try {
       result = await this.getCLICommand(programId, args.environmentId, args.commandId)
     } catch (error) {
-      cli.action.stop(error.message)
+      console.log(error)
       return
     }
 

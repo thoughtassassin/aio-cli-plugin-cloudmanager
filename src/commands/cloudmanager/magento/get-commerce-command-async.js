@@ -12,7 +12,8 @@ class GetCommerceCommandAsync extends Command {
         ['run', 'run-commerce-command-async', args.environmentId, args.commandId],
         {
           detached: true,
-          stdio: 'ignore'
+          stdio: 'ignore',
+          shell: true,
         }
       )
 
