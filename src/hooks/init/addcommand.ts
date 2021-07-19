@@ -10,13 +10,13 @@ class DynamicPlugin extends Config.Plugin {
     return []
   }
   get commandIDs() {
-    return ['cloudmanager:bin-magento:reindexer:index', 'cloudmanager:bin-magento:cache:clean']
+    return ['cloudmanager:commerce:bin-magento:reindexer:index', 'cloudmanager:commerce:bin-magento:cache:clean']
   }
 
   get commands(): Config.Command.Plugin[] {
     const cmds = ['bin-magento:reindexer:index', 'bin-magento:cache:clean']
     const dyncmds = cmds.map(cmd => class extends BaseCommerceCommand {
-      static id = 'cloudmanager:' + cmd
+      static id = 'cloudmanager:commerce:' + cmd
       static load() { return this }
       async run() {
         const { args, flags } = this.parse(this)
