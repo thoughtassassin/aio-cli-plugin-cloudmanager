@@ -20,7 +20,8 @@
     "halfred": "^2.0.0",
     "inquirer": "^8.1.0",
     "lodash": "^4.17.15",
-    "moment": "^2.29.0"
+    "moment": "^2.29.0",
+    "tslib": "^1"
   },
   "devDependencies": {
     "@adobe/eslint-config-aio-lib-config": "1.2.1",
@@ -47,7 +48,10 @@
     "pinst": "2.1.6",
     "semantic-release": "17.4.4",
     "stdout-stderr": "0.1.13",
-    "tmp": "0.2.1"
+    "tmp": "0.2.1",
+    "ts-node": "^7",
+    "tslint": "^5",
+    "typescript": "^3.0"
   },
   "engines": {
     "node": ">=12"
@@ -74,7 +78,10 @@
     "repositoryPrefix": "<%- repo %>/blob/<%- version %>/<%- commandPath %>",
     "hooks": {
       "prerun": "./src/hooks/prerun/prerun-all.js",
-      "init": "./src/hooks/init/migrate-jwt-context-hook.js"
+      "init": [
+        "./src/hooks/init/migrate-jwt-context-hook.js",
+        "./lib/hooks/init/addcommand"
+      ]
     },
     "topics": {
       "cloudmanager": {

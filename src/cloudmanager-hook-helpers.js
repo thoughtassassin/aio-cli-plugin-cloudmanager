@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 function isThisPlugin (hookOptions) {
-  return hookOptions.Command.plugin.name === '@adobe/aio-cli-plugin-cloudmanager'
+  return hookOptions.Command.plugin && hookOptions.Command.plugin.name === '@adobe/aio-cli-plugin-cloudmanager'
 }
 
 module.exports = {
