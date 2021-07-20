@@ -35,10 +35,10 @@ class DynamicPlugin extends Config.Plugin {
         }
         return result
       }
-      args = [
+      static args = [
         { name: 'environmentId', required: true, description: 'the environment id' },
       ]
-      flags = {
+      static flags = {
         ...commonFlags.global,
         ...commonFlags.programId,
       }
